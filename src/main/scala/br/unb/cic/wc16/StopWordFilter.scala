@@ -5,7 +5,7 @@ import scala.io.Source
 
 class StopWordFilter(em: EventManager) {
     var stopWords = Set[String]()           // pensei em usar set pra um acesso mais rapido que array
-    em.subscribe("load_stop_words", load)
+    em.subscribe("load", load)
     em.subscribe("word", isStopWord)
 
     def isStopWord(evento: Array[String]): Unit = {
@@ -15,7 +15,7 @@ class StopWordFilter(em: EventManager) {
     }
 
     def load(evento: Array[String]): Unit = {
-        var path = evento(1)
+        var path = evento(2)
         Source.fromFile(path).getLines.toList.foreach(s => stopWords += s)
     }
 

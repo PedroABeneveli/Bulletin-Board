@@ -35,7 +35,7 @@ class StopWordFilterTest extends AnyFunSuite {
     test("Testando o load_stop_words com o arquivo stop-word.txt") {
         var em = new EventManager
         var swf = new StopWordFilter(em)
-        em.publish(Array("load_stop_words", "target/scala-2.13/test-classes/stop-words.txt"))
+        em.publish(Array("load", "", "target/scala-2.13/test-classes/stop-words.txt"))
 
         val expected = Set("i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", 
                         "yours", "yourself", "yourselves", "he", "him", "his", "himself", "she", "her", 
@@ -63,7 +63,7 @@ class StopWordFilterTest extends AnyFunSuite {
         }
         
         em.subscribe("valid_word", f1)
-        em.publish(Array("load_stop_words", "target/scala-2.13/test-classes/stop-words.txt"))
+        em.publish(Array("load", "", "target/scala-2.13/test-classes/stop-words.txt"))
         em.publish(Array("word", "through"))
 
         assert(!em.inscricoes.contains("teste"))
