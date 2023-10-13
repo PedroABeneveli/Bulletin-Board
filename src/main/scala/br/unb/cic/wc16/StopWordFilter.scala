@@ -1,10 +1,11 @@
 package br.unb.cic.wc16
 
 import scala.collection.mutable.Set
+import scala.io.Source
 
 class StopWordFilter(em: EventManager) {
-    private var stopWords = Set[String]()           // pensei em usar set pra um acesso mais rapido que array
-    em.subscribe("load", load)
+    var stopWords = Set[String]()           // pensei em usar set pra um acesso mais rapido que array
+    em.subscribe("load_stop_words", load)
     em.subscribe("word", isStopWord)
 
     def isStopWord(evento: Array[String]): Unit = {
@@ -14,7 +15,8 @@ class StopWordFilter(em: EventManager) {
     }
 
     def load(evento: Array[String]): Unit = {
-        var temp = 2
+        var path = evento(1)
+        Source.fromFile(path).getLines.toList.foreach(s => stopWords += s)
     }
 
 }
