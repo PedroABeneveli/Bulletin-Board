@@ -7,7 +7,7 @@ class DataStorage(eventManager: EventManager) {
     var event_manager = eventManager;
     var palavras: String
 
-    event_manager.subscribe(("load", load))
+    event_manager.subscribe("load", load)
     event_manager.subscribe("start", produce_words)
 
     // carrega as palavras do arquivo e as salva no atributo 'palavras'
@@ -29,7 +29,7 @@ class DataStorage(eventManager: EventManager) {
         val lista_palavras = palavras.split(" ")
 
         // publica cada palavra do atributo 'palavras' pelo event manager
-        lista_palavras.foreach(elem => event_manager.publish("word", elem))
-        event_manager.publish("eof", null)
+        lista_palavras.foreach(elem => event_manager.publish(Array("word", elem)))
+        event_manager.publish(Array("eof", null))
     }
 }
