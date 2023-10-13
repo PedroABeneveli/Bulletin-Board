@@ -5,7 +5,7 @@ import scala.util.matching.Regex
 
 class DataStorage(eventManager: EventManager) {
     var event_manager = eventManager;
-    var palavras: String
+    var palavras: String = new String()
 
     event_manager.subscribe("load", load)
     event_manager.subscribe("start", produce_words)
