@@ -12,7 +12,7 @@ class EventManager {
         if (inscricoes.contains(tipoEvento))
             inscricoes(tipoEvento) += handler
         else 
-            inscricoes += (tipoEvento -> Set[(Array[String]) => Unit](handler))
+            inscricoes += (tipoEvento -> Set[Array[String] => Unit](handler))
     }
 
     // o evento eh uma array de strings porque vai ser o nome do evento + os argumentos daquele evento
