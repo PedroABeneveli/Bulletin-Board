@@ -16,7 +16,7 @@ class StopWordFilter(em: EventManager) {
 
     def load(evento: Array[String]): Unit = {
         var path = evento(2)
-        Source.fromFile(path).getLines.toList.foreach(s => stopWords += s)
+        Source.fromFile(path).getLines().toList.foreach(s => stopWords += s)
     }
 
 }

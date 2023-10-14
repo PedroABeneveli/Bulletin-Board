@@ -2,7 +2,7 @@ package br.unb.cic.wc16
 
 import scala.collection.mutable.HashMap
 import scala.collection.mutable.Set
-import scala.collection.mutable.ListMap
+import scala.collection.immutable.ListMap
 
 class WordFrequencyCounter(em: EventManager) {
     
@@ -20,7 +20,8 @@ class WordFrequencyCounter(em: EventManager) {
 
     def mostraFrequencias(evento: Array[String]): Unit = {
         var contador_de_palavras_ordenada = ListMap(contador_de_palavras.toSeq.sortWith(_._2 > _._2):_*)
-        contador_de_palavras_ordenada.foreach(println)
+        for ((w, c) <- contador_de_palavras_ordenada.toList.take(25))
+            println(w + " - " + c.toString())
     }   
 
 }
