@@ -2,6 +2,7 @@ package br.unb.cic.wc16
 
 import org.scalatest.funsuite.AnyFunSuite
 import scala.collection.mutable.HashMap
+import java.io.ByteArrayOutputStream
 
 class WordFrequencyCounterTest extends AnyFunSuite {
     test("Testando inserir uma palavra no contador pela primeira vez") {
@@ -25,6 +26,7 @@ class WordFrequencyCounterTest extends AnyFunSuite {
 
         var expected = HashMap("exemplo1" -> 2, "exemplo2" -> 2)
 
-        assert(expected == wcf.contador_de_palavras)
+        assert(expected == wfc.contador_de_palavras)
     }
+    
 }
