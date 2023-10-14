@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class WordFrequencyApplicationTest extends AnyFunSuite {
 
-    test("Testando a reacao ao evento 'run' e verificando o publish do metodo run") {
+    test("Testando a reacao ao evento 'run'") {
         var em = new EventManager
         var wfa = new WordFrequencyApplication(em)
         val f1 = (n: Array[String]) => {
