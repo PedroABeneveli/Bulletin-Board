@@ -16,7 +16,7 @@ class DataStorage(eventManager: EventManager) {
         val fonte = Source.fromFile(path)
 
         // retorna uma string com as palavras separadas por espaço
-        palavras = fonte.mkString(" ") 
+        palavras = fonte.mkString("") 
 
         val pattern = new Regex("[\\W_]+")
         palavras = pattern.replaceAllIn(palavras, " ").toLowerCase()
