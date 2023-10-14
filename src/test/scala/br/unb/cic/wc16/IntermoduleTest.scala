@@ -1,6 +1,7 @@
 package br.unb.cic.wc16
 
 import org.scalatest.funsuite.AnyFunSuite
+import scala.collection.mutable.HashMap
 
 class IntermoduleTest extends AnyFunSuite {
 
@@ -25,6 +26,30 @@ class IntermoduleTest extends AnyFunSuite {
                         "will", "just", "don", "should", "now")
 
         assert(expected == swf.stopWords)
+    }
+
+    test("Testando a passagem de palavra valida do StopWordFilter pro WordFrequencyCounter") {
+        var em = new EventManager
+        var swf = new StopWordFilter(em)
+        var wfc = new WordFrequencyCounter(em)
+        em.publish(Array("load", "", "target/scala-2.13/test-classes/stop-words.txt"))        
+        em.publish(Array("word", "uva"))
+
+        val expected = HashMap("uva" -> 1)
+
+        assert(expected == wfc.contador_de_palavras)
+    }
+
+    test("Testando a passagem de palavra invalida do StopWordFilter pro WordFrequencyCounter") {
+        var em = new EventManager
+        var swf = new StopWordFilter(em)
+        var wfc = new WordFrequencyCounter(em)
+        em.publish(Array("load", "", "target/scala-2.13/test-classes/stop-words.txt"))        
+        em.publish(Array("word", "now"))
+
+        val expected = HashMap[String, Int]()
+
+        assert(expected == wfc.contador_de_palavras)
     }
 
 }
