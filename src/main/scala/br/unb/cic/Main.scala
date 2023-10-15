@@ -10,6 +10,7 @@ object Main extends CliMain[Unit] (
     var filePath = arg[String](description = "caminho para o arquivo que tera a frequencia contada")
     var stopWordsPath = arg[String](description = "caminho para o arquivo das stop words, as palavras que nao serao contadas")
     
+    // instancia todos os módulos e publica o evento pra iniciar o programa
     def run: Unit = {
         var em = new EventManager
         var swf = new StopWordFilter(em)

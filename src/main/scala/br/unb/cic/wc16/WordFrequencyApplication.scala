@@ -4,6 +4,7 @@ class WordFrequencyApplication(em: EventManager) {
     em.subscribe("run", run)
     em.subscribe("eof", stop)
 
+    // publica o evento que inicia a leitura dos arquivos, e depois o evento que comeca a analise e contagem das palavras
     def run(evento: Array[String]): Unit = {
         var pathTexto = evento(1)
         var pathStopWords = evento(2)
@@ -11,6 +12,7 @@ class WordFrequencyApplication(em: EventManager) {
         em.publish(Array("start"))
     }
 
+    // quando todas as palavras do arquivo forem lidas, pede pra imprimir a frequencia
     def stop(evento: Array[String]): Unit = {
         em.publish(Array("print"))
     }

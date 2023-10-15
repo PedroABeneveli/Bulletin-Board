@@ -8,15 +8,17 @@ class StopWordFilter(em: EventManager) {
     em.subscribe("load", load)
     em.subscribe("word", isStopWord)
 
+    // verifica se a palavra do evento word não está no set das stop words
     def isStopWord(evento: Array[String]): Unit = {
         var palavra = evento(1)
         if (!stopWords.contains(palavra))
             em.publish(Array("valid_word", palavra))
     }
 
+    // abre o arquivo e coloca todas as palavras no set
     def load(evento: Array[String]): Unit = {
         var path = evento(2)
-        Source.fromFile(path).getLines().toList.foreach(s => stopWords += s)
+        Source.fromFile(path).getLines().toList.foreach(s => stopWords += s.toLowerCase())
     }
 
 }
