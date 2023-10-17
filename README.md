@@ -9,7 +9,7 @@ Nome - Matrícula
 
 ## Vídeo Aula
 Link:
-* TODO
+* https://www.youtube.com/watch?v=NSShZEe6siI
 
 ## Implementação do Estilo
 A implementação está presente no seguinte repositório do GitHub:
